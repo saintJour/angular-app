@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   create(user: User){
-    return this.http.post(`${API}/register`, user);
+    return this.http.post(`${API}/register`, user, { responseType: 'text', observe: 'response' });
   }
 
 }

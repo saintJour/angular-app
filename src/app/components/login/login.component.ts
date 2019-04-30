@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {MyserviceService} from '../../services/myservice.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +13,42 @@ import {MyserviceService} from '../../services/myservice.service';
 })
 export class LoginComponent implements OnInit {
 
+  form: any;
+  hide = true;
+
   constructor(
-    private mySvc: MyserviceService
-  ) { }
+    private authSvc: AuthService,
+    private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
+    private notifier: NotifierService,
+    private router: Router
+  ) { 
+    this.form = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
   }
 
-  emitTrue() {
-    this.mySvc.emitTrue();
-  }
-
-  emitFalse() {
-    this.mySvc.emitFalse();
+  submit(){
+    this.spinner.show();
+    this.authSvc.login(this.form.value)
+    .subscribe(res => {
+      if(res.status == 200){
+        console.log('RES_BODY', res.body);
+        console.log('RES', res);
+        localStorage.setItem('token', res.body.toString());
+        console.log(localStorage.getItem('token'));
+        this.spinner.hide();
+        this.router.navigate(['/mydocs']);
+      }
+    },
+    err => {
+      this.spinner.hide();
+      this.notifier.notify( 'error', 'No fue posible iniciar sesión');
+    });
   }
 
 }

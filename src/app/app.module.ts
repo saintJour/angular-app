@@ -22,6 +22,9 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NotifierModule } from 'angular-notifier';
+import { MydocsComponent } from './components/mydocs/mydocs.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     VerifyComponent,
     NavbarNoLoggedComponent,
     NavbarLoggedComponent,
-    ProfileComponent
+    ProfileComponent,
+    MydocsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,9 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    NgxSpinnerModule,
+    NotifierModule
   ],
   providers: [],
   bootstrap: [AppComponent]
