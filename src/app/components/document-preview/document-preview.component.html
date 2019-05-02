@@ -1,0 +1,24 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>
+            {{document.name}}
+            <br>
+            <mat-chip-list>
+              <mat-chip color="accent" selected>{{document.type}}</mat-chip>
+            </mat-chip-list>
+        </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="/assets/img/document_thumbnail.jpg">
+    <mat-card-content>
+      {{courseInfo.institution}}, {{courseInfo.program}}
+      <br>
+      {{courseInfo.course}}
+      <br>
+      {{document.description}}
+      <br>
+      {{document.year}}
+    </mat-card-content>
+    <mat-card-actions>
+  
+    </mat-card-actions>
+  </mat-card>

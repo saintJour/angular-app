@@ -1,0 +1,6 @@
+.card{
+    max-width: 20%;
+    max-height: 15%;
+    cursor: pointer;
+    margin: 1em;
+}

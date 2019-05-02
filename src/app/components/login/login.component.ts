@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
       if(res.status == 200){
         console.log('RES_BODY', res.body);
         console.log('RES', res);
+        localStorage.removeItem('token');
         localStorage.setItem('token', res.body.toString());
         console.log(localStorage.getItem('token'));
         this.spinner.hide();

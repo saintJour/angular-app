@@ -1,9 +1,13 @@
-.example-container {
+.ex-container {
   display: flex;
   flex-direction: column;
 }
 
-.example-card{
-  margin: 0 auto;
-  width: 30%;
+.card{
+  width: 20em;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 1em; 
+  margin-bottom: 1em; 
 }

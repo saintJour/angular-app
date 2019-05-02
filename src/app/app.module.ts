@@ -25,6 +25,10 @@ import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotifierModule } from 'angular-notifier';
 import { MydocsComponent } from './components/mydocs/mydocs.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { DocumentPreviewComponent } from './components/document-preview/document-preview.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { MydocsComponent } from './components/mydocs/mydocs.component';
     NavbarNoLoggedComponent,
     NavbarLoggedComponent,
     ProfileComponent,
-    MydocsComponent
+    MydocsComponent,
+    DocumentPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +60,16 @@ import { MydocsComponent } from './components/mydocs/mydocs.component';
     MatSelectModule,
     MatCardModule,
     NgxSpinnerModule,
-    NotifierModule
+    NotifierModule,
+    MatChipsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
