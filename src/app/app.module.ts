@@ -29,6 +29,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DocumentPreviewComponent } from './components/document-preview/document-preview.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { StarRatingModule } from 'angular-star-rating';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatCardModule,
     NgxSpinnerModule,
     NotifierModule,
-    MatChipsModule
+    MatChipsModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
     {

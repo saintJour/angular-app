@@ -1,3 +1,5 @@
-<mat-toolbar>Documentos Subidos</mat-toolbar>
+<mat-toolbar class="toolbar">Documentos Subidos</mat-toolbar>
 
-<app-document-preview [document]="document" *ngFor="let document of documents"></app-document-preview>
+<div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center center">
+    <app-document-preview [document]="document" *ngFor="let document of documents"></app-document-preview>
+</div>

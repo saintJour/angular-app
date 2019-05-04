@@ -1,6 +1,10 @@
 .card{
-    max-width: 20%;
-    max-height: 15%;
-    cursor: pointer;
-    margin: 1em;
+    margin-bottom: 1em;
+}
+
+.doc-thumbnail{
+    height: 200px;
+    width: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }

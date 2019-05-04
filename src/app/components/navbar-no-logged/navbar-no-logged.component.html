@@ -1,1 +1,7 @@
-<mat-toolbar color="primary" >Inicia sesión</mat-toolbar>
+<mat-toolbar class="mat-elevation-z4" color="primary">
+    <span>Apuntes</span>
+    <span class="example-spacer"></span>
+    <button mat-button (click)="goToLogin()">Iniciar Sesión</button>
+    <span>|</span>
+    <button mat-button (click)="goToSignup()">Registrarse</button>
+</mat-toolbar>

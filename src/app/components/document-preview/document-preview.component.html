@@ -1,24 +1,29 @@
-<mat-card class="card">
-    <mat-card-header>
-        <mat-card-title>
-            {{document.name}}
-            <br>
-            <mat-chip-list>
-              <mat-chip color="accent" selected>{{document.type}}</mat-chip>
-            </mat-chip-list>
-        </mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="/assets/img/document_thumbnail.jpg">
-    <mat-card-content>
-      {{courseInfo.institution}}, {{courseInfo.program}}
-      <br>
-      {{courseInfo.course}}
-      <br>
-      {{document.description}}
-      <br>
-      {{document.year}}
-    </mat-card-content>
-    <mat-card-actions>
-  
-    </mat-card-actions>
-  </mat-card>
+<div>
+    <mat-card class="card">
+        <div fxLayout="row" fxLayoutGap="20px">
+            <img class="doc-thumbnail" src="/assets/img/document_thumbnail.jpg">
+            <p style="width: 300px !important;height: 100px !important">
+                <b>{{document.name}}</b>
+                <mat-chip-list>
+                    <mat-chip color="primary" *ngIf="document.type == 'note'">apunte</mat-chip>
+                    <mat-chip color="primary" *ngIf="document.type == 'book'">libro</mat-chip>
+                    <mat-chip color="primary" *ngIf="document.type == 'test'">control</mat-chip>
+                    <mat-chip color="primary" *ngIf="document.type == 'exam'">prueba</mat-chip>
+                    <mat-chip color="primary" *ngIf="!document.approved">pendiente</mat-chip>
+                    <mat-chip color="primary" *ngIf="document.approved">aprobado</mat-chip>
+                </mat-chip-list>
+                <br>
+                {{courseInfo.course}}
+                <br>
+                {{courseInfo.program}}, {{courseInfo.institution}}
+                <br>
+                {{document.year}}
+                
+                <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating>
+                
+                <button style="margin-right: 2em" mat-raised-button color="primary">Editar</button>
+                <button mat-raised-button color="warn">Eliminar</button>
+            </p>
+        </div>
+    </mat-card>
+</div>
