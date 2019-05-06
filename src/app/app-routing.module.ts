@@ -6,6 +6,12 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { VerifyComponent } from './components/verify/verify.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MydocsComponent } from './components/mydocs/mydocs.component';
+import { DocumentDetailComponent } from './components/document-detail/document-detail.component';
+import { EditDocumentComponent } from './components/edit-document/edit-document.component';
+import { InstitutionsComponent } from './components/institutions/institutions.component';
+import { InstitutionDetailComponent } from './components/institution-detail/institution-detail.component';
+import { ProgramComponent } from './components/program/program.component';
+import { SemesterComponent } from './components/semester/semester.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -13,7 +19,13 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'verify', component: VerifyComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'mydocs', component: MydocsComponent}
+  { path: 'mydocs', component: MydocsComponent},
+  { path: 'documents/:id', component: DocumentDetailComponent},
+  { path: 'edit-document', component: EditDocumentComponent},
+  { path: 'institutions', component: InstitutionsComponent},
+  { path: 'institutions/:id', component: InstitutionDetailComponent},
+  { path: 'institutions/:institutionId/programs/:programId', component: ProgramComponent},
+  { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId', component: SemesterComponent}
 ];
 
 @NgModule({

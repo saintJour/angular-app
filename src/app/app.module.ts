@@ -30,6 +30,13 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DocumentPreviewComponent } from './components/document-preview/document-preview.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { StarRatingModule } from 'angular-star-rating';
+import { DocumentDetailComponent } from './components/document-detail/document-detail.component';
+import { EditDocumentComponent } from './components/edit-document/edit-document.component';
+import { InstitutionsComponent } from './components/institutions/institutions.component';
+import { InstitutionDetailComponent } from './components/institution-detail/institution-detail.component';
+import { ProgramComponent } from './components/program/program.component';
+import { SemesterComponent } from './components/semester/semester.component';
+import { CourseComponent } from './components/course/course.component';
 
 
 @NgModule({
@@ -44,7 +51,14 @@ import { StarRatingModule } from 'angular-star-rating';
     NavbarLoggedComponent,
     ProfileComponent,
     MydocsComponent,
-    DocumentPreviewComponent
+    DocumentPreviewComponent,
+    DocumentDetailComponent,
+    EditDocumentComponent,
+    InstitutionsComponent,
+    InstitutionDetailComponent,
+    ProgramComponent,
+    SemesterComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,

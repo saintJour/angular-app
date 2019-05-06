@@ -1,5 +1,5 @@
 <div>
-    <mat-card class="card">
+    <mat-card class="card" [routerLink]="['/documents/' + document.id]">
         <div fxLayout="row" fxLayoutGap="20px">
             <img class="doc-thumbnail" src="/assets/img/document_thumbnail.jpg">
             <p style="width: 300px !important;height: 100px !important">
@@ -18,10 +18,10 @@
                 {{courseInfo.program}}, {{courseInfo.institution}}
                 <br>
                 {{document.year}}
+                <br><br>
+                <!-- <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating> -->
                 
-                <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating>
-                
-                <button style="margin-right: 2em" mat-raised-button color="primary">Editar</button>
+                <button style="margin-right: 2em" mat-raised-button color="primary" [routerLink]="['/edit-document']">Editar</button>
                 <button mat-raised-button color="warn">Eliminar</button>
             </p>
         </div>

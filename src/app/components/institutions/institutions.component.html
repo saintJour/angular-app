@@ -1,0 +1,12 @@
+<mat-toolbar class="toolbar">Instituciones</mat-toolbar>
+
+<div fxLayout="row wrap" fxLayoutGap="30px grid" fxLayoutAlign="center center">
+  <div *ngFor="let institution of institutions">
+    <mat-card class="card" [routerLink]="['/institutions/' + institution.id]">
+      <mat-card-header style="height: 50px">
+        <mat-card-title>{{institution.name}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image class="card-image" [src]="institution.imageUrl">
+    </mat-card>
+  </div>
+</div>

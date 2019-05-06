@@ -12,12 +12,12 @@ export class CourseService {
 
   constructor(private http: HttpClient) { }
 
-  getOne(institutionId: number, CourseId: number){
-    return this.http.get<Course>(`${API}/institutions/${institutionId}/Courses/${CourseId}`);
+  getOne(institutionId: number, programId:number, semesterId: number, courseId: number){
+    return this.http.get<Course[]>(`${API}/institutions/${institutionId}/programs/${programId}/semesters/${semesterId}/courses/${courseId}`);
   }
 
-  getAll(institutionId: number){
-    return this.http.get<Course[]>(`${API}/institutions/${institutionId}/Courses`);
+  getAll(institutionId: number, programId: number, semesterId: number){
+    return this.http.get<Course[]>(`${API}/institutions/${institutionId}/programs/${programId}/semesters/${semesterId}/courses`);
   }
 
   getInfo(id: number){
