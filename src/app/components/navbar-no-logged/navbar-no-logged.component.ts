@@ -9,6 +9,8 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 })
 export class NavbarNoLoggedComponent implements OnInit {
 
+  query: string;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -20,6 +22,14 @@ export class NavbarNoLoggedComponent implements OnInit {
 
   goToSignup(){
     this.router.navigate(['/signup']);
+  }
+
+  doSearch(query: string){
+    if(query){
+      this.router.navigateByUrl('', {skipLocationChange: true}).then(() => {
+        this.router.navigate(['/search/' + query]);
+      });
+    }
   }
 
 }

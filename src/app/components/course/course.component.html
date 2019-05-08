@@ -1,3 +1,8 @@
-<p>
-  course works!
-</p>
+<h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3">{{institution?.name}} > {{program?.name}} > {{semester?.name}} > {{course?.name}}</h3>
+
+<h3 style="margin-left: 1em; margin-top: 5em; margin-bottom: 20em; text-align: center" class="mat-h3" *ngIf="documents?.length == 0"><b>Aún no hay documentos para esta asignatura</b></h3>
+
+
+<div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center center">
+    <app-document-preview [document]="document" *ngFor="let document of documents"></app-document-preview>
+</div>

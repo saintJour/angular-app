@@ -37,6 +37,9 @@ import { InstitutionDetailComponent } from './components/institution-detail/inst
 import { ProgramComponent } from './components/program/program.component';
 import { SemesterComponent } from './components/semester/semester.component';
 import { CourseComponent } from './components/course/course.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -58,7 +61,8 @@ import { CourseComponent } from './components/course/course.component';
     InstitutionDetailComponent,
     ProgramComponent,
     SemesterComponent,
-    CourseComponent
+    CourseComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,8 @@ import { CourseComponent } from './components/course/course.component';
     NgxSpinnerModule,
     NotifierModule,
     MatChipsModule,
+    MatExpansionModule,
+    MatListModule,
     StarRatingModule.forRoot()
   ],
   providers: [

@@ -1,0 +1,57 @@
+<h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3">Resultados para <i>"{{query}}"</i></h3>
+
+<mat-accordion>
+  <mat-expansion-panel expanded="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Documentos
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="documents?.length == 0">Sin resultados</h3>
+    <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center center">
+      <app-document-preview [document]="document" *ngFor="let document of documents"></app-document-preview>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Instituciones
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="institutions?.length == 0">Sin resultados</h3>
+    <mat-nav-list>
+      <div *ngFor="let institution of institutions">
+        <mat-list-item>{{institution?.name}}</mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-nav-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Carreras
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="programs?.length == 0">Sin resultados</h3>
+    <mat-nav-list>
+      <div *ngFor="let program of programs">
+        <mat-list-item>{{program?.name}}</mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-nav-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Asignaturas
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="courses?.length == 0">Sin resultados</h3>
+    <mat-nav-list>
+      <div *ngFor="let course of courses">
+        <mat-list-item>{{course?.name}}</mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-nav-list>
+  </mat-expansion-panel>
+</mat-accordion>

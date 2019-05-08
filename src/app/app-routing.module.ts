@@ -12,6 +12,8 @@ import { InstitutionsComponent } from './components/institutions/institutions.co
 import { InstitutionDetailComponent } from './components/institution-detail/institution-detail.component';
 import { ProgramComponent } from './components/program/program.component';
 import { SemesterComponent } from './components/semester/semester.component';
+import { CourseComponent } from './components/course/course.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -25,7 +27,9 @@ const routes: Routes = [
   { path: 'institutions', component: InstitutionsComponent},
   { path: 'institutions/:id', component: InstitutionDetailComponent},
   { path: 'institutions/:institutionId/programs/:programId', component: ProgramComponent},
-  { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId', component: SemesterComponent}
+  { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId', component: SemesterComponent},
+  { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId/courses/:courseId', component: CourseComponent},
+  { path: 'search/:query', component: SearchResultsComponent}
 ];
 
 @NgModule({
