@@ -40,6 +40,8 @@ import { CourseComponent } from './components/course/course.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import {MatListModule} from '@angular/material/list';
     ProgramComponent,
     SemesterComponent,
     CourseComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    DocumentUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,8 @@ import {MatListModule} from '@angular/material/list';
     MatChipsModule,
     MatExpansionModule,
     MatListModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    MatStepperModule
   ],
   providers: [
     {

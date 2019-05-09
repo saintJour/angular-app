@@ -12,8 +12,18 @@ export class DocumentService {
 
   constructor(private http: HttpClient) { }
 
-  create(document: Document){
-
+  upload(params){
+    let formData = new FormData();
+    formData.append('document', params.File);
+    formData.append('name', params.name);
+    formData.append('CourseId', params.CourseId);
+    formData.append('description', params.description);
+    formData.append('type', params.type);
+    formData.append('year', params.year);
+    params.tags.forEach(tags => {
+      formData.append('tags', tags);
+    });
+    return this.http.post(`${API}/profile/documents`, formData, {observe: 'response'});
   }
 
   getAllFromCurrentUser(){

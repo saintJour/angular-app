@@ -1,0 +1,107 @@
+<mat-toolbar class="toolbar">Subir Documento</mat-toolbar>
+
+<mat-horizontal-stepper  #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <div fxLayout="column" fxLayoutAlign="start">
+    <form class="form-container" [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Subir archivo</ng-template>
+      <input #fileInput (change)="changeFileInput($event)" type="file" formControlName="document" />
+      <mat-form-field>
+
+        <input matInput type="text" name="name" formControlName="name" placeholder="Nombre" required />
+        <mat-error>Ingresar nombre de archivo</mat-error>
+
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" name="description" formControlName="description" placeholder="Descripcion" required />
+        <mat-error>Ingresar descripcion</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+    </div>
+
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <div fxLayout="column" fxLayoutAlign="center center">
+    <form class="form-container" [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Agregar información</ng-template>
+      <mat-form-field>
+          <mat-label>Institución</mat-label>
+          <mat-select formControlName="institution">
+            <mat-option *ngFor="let ins of institutions" [value]="ins" (onSelectionChange)="changeIns($event)">
+              {{ins.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field>
+            <mat-label>Carrera</mat-label>
+            <mat-select formControlName="program">
+                <mat-option *ngFor="let program of programs" [value]="program" (onSelectionChange)="changeProgram($event)">
+                  {{program.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Semestre</mat-label>
+            <mat-select formControlName="semester">
+              <mat-option *ngFor="let semester of semesters" [value]="semester" (onSelectionChange)="changeSemester($event)">
+                {{semester.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+          <mat-form-field>
+              <mat-label>Asignatura</mat-label>
+              <mat-select formControlName="CourseId">
+                  <mat-option *ngFor="let course of courses" [value]="course.id">
+                    {{course.name}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Tipo</mat-label>
+              <mat-select formControlName="type">
+                <mat-option value="note">
+                  Apunte
+                </mat-option>
+                <mat-option value="book">
+                  Libro
+                </mat-option>
+                <mat-option value="exam">
+                  Prueba
+                </mat-option>
+                <mat-option value="test">
+                  Control
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+              <input matInput type="number" formControlName="year" placeholder="Año" required>
+              <mat-error>El año del documento debe estar entre 1980 y {{year}}</mat-error>
+          </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+    </div>
+  </mat-step>
+  <mat-step>
+      <div fxLayout="column" fxLayoutAlign="end end">
+      <ng-template matStepLabel>Finalizar</ng-template>
+      
+
+        <button  mat-button matStepperPrevious>Atrás</button>
+        <button  mat-button (click)="stepper.reset()">Reiniciar</button>
+        <button  mat-button>Subir</button>
+      </div>
+
+  </mat-step>
+</mat-horizontal-stepper>
