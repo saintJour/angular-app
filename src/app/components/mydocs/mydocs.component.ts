@@ -16,8 +16,8 @@ export class MydocsComponent implements OnInit {
   ) { 
     this.docSvc.getAllFromCurrentUser()
     .subscribe(data => {
-      console.log(data.body);
-      this.documents = data.body;
+      console.log(data);
+      this.documents = data;
     });
   }
 

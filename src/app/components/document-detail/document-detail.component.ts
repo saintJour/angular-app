@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentService } from 'src/app/services/document.service';
+import { ActivatedRoute } from '@angular/router';
+import { Document } from '../../models/document.model';
 
 @Component({
   selector: 'app-document-detail',
@@ -7,7 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentDetailComponent implements OnInit {
 
-  constructor() { }
+  docId: number;
+  document: Document;
+  page: number;
+
+  constructor(
+    private docSvc: DocumentService,
+    private actRoute: ActivatedRoute
+  ) { 
+    this.actRoute.params
+    .subscribe(params => {
+      this.docId = params['id'];
+    });
+
+    this.docSvc.getOne(this.docId)
+    .subscribe(doc => {
+      this.document = doc;
+    });
+  }
 
   ngOnInit() {
   }

@@ -6,6 +6,7 @@ import { SemesterService } from 'src/app/services/semester.service';
 import { CourseService } from 'src/app/services/course.service';
 import { InstitutionService } from 'src/app/services/institution.service';
 import { ProgramService } from 'src/app/services/program.service';
+import { DocumentService } from 'src/app/services/document.service';
 
 @Component({
   selector: 'app-document-upload',
@@ -16,6 +17,7 @@ export class DocumentUploadComponent implements OnInit {
 
   firstFormGroup: any;
   secondFormGroup: any;
+  form: any;
   selectedFile: any;
   institutions: any;
   programs: any;
@@ -31,6 +33,7 @@ export class DocumentUploadComponent implements OnInit {
     private programSvc: ProgramService,
     private semSvc: SemesterService,
     private courseSvc: CourseService,
+    private docSvc: DocumentService,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private notifier: NotifierService
@@ -89,6 +92,23 @@ export class DocumentUploadComponent implements OnInit {
       if (event.source.selected) {
         this.courses = data;
       }
+    });
+  }
+
+  submit(){
+    this.spinner.show();
+    this.form = Object.assign(this.firstFormGroup.value, this.secondFormGroup.value);
+    console.log("Merged Form: ", this.form);
+    this.docSvc.upload(this.form, this.selectedFile)
+    .subscribe(res => {
+      if(res.status == 201){
+        this.spinner.hide();
+        this.notifier.notify( 'success', 'Se ha subido el documento correctamente. Una vez aprobado por los administradores será visible en la aplicación');
+      }
+    }, err => {
+      this.spinner.hide();
+      this.notifier.notify( 'error', 'Hubo un error al subir el documento');
+      console.log('ERROR: ', err);
     });
   }
 

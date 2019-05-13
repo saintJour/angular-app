@@ -11,6 +11,7 @@ export class Document {
     key: string;
     thumbnailKey: string;
     approved: boolean;
+    url: string;
     createdAt: Date;
     updatedAt: Date;
 }

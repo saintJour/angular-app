@@ -10,6 +10,7 @@ import { Document } from '../../models/document.model';
 export class DocumentPreviewComponent implements OnInit {
 
   @Input() document: Document;
+  @Input() isEditable: boolean;
 
   courseInfo: any;
 

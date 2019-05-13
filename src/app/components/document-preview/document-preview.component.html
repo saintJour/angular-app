@@ -20,8 +20,8 @@
                 {{document.year}}
                 <br>
                 <!-- <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating> -->
-                <button style="margin-right: 2em" mat-raised-button color="primary" [routerLink]="['/edit-document']">Editar</button>
-                <button mat-raised-button color="warn">Eliminar</button>
+                <button *ngIf="isEditable" style="margin-right: 2em" mat-stroked-button color="primary" [routerLink]="['/edit-document']">Editar</button>
+                <button *ngIf="isEditable" mat-stroked-button color="warn">Eliminar</button>
             </p>
         </div>
     </mat-card>
