@@ -1,12 +1,65 @@
 
-<mat-form-field>
-  <input matInput [(ngModel)]="page">
-</mat-form-field>
+<mat-card class="card">
+  <div fxLayout="row" fxLayoutGap="10px">
+      <p>
+          <b>{{document?.name}}</b>
+          <br>
+          {{document?.description}}
+          <mat-chip-list>
+              <mat-chip color="primary" *ngIf="document.type == 'note'">apunte</mat-chip>
+              <mat-chip color="primary" *ngIf="document.type == 'book'">libro</mat-chip>
+              <mat-chip color="primary" *ngIf="document.type == 'test'">control</mat-chip>
+              <mat-chip color="primary" *ngIf="document.type == 'exam'">prueba</mat-chip>
+          </mat-chip-list>
+          <br>
+          {{courseInfo?.course}}
+          <br>
+          {{courseInfo?.program}}
+          <br>
+          {{courseInfo?.institution}}
+          <br>
+          {{document?.year}}
+          <br>
+          <mat-chip-list>
+              <mat-chip color="primary" *ngFor="let tag of document.tags">{{tag}}</mat-chip>
+          </mat-chip-list>
+          <br>
+          <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating>
+          <br>
+          <button style="width: 150px; text-align: center; margin-right: 1em" mat-stroked-button color="primary" [routerLink]="['']"><mat-icon>save</mat-icon> Guardar</button>
+          <button style="width: 150px" mat-stroked-button color="primary" (click)="download()"><mat-icon>cloud_download</mat-icon> Descargar</button>
+          <br>
+      </p>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div>
+            <button mat-icon-button (click)="prev()"> 
+              <mat-icon aria-label="Example icon-button with a heart icon">navigate_before</mat-icon>
+            </button>
+            <mat-form-field style="width: 1em">
+                <input matInput [(ngModel)]="page">
+              </mat-form-field>
+            <button mat-icon-button (click)="next()">
+              <mat-icon aria-label="Example icon-button with a heart icon">navigate_next</mat-icon>
+            </button>
+        </div>
+        <pdf-viewer
+          [src]="document?.url" 
+          [page]="page" 
+          [render-text]="true" 
+          [show-all]="false"
+          style="display: block;"
+          (after-load-complete)="callBackFn($event)">
+        </pdf-viewer>
+      </div>
+  </div>
+</mat-card>
 
-<pdf-viewer 
-  [src]="document?.url" 
-  [page]="page" 
-  [render-text]="true" 
-  [show-all]="false"
-  style="display: block;">
-</pdf-viewer>
+<ngx-spinner type="timer">
+    <p style="color: white"> Descargando... </p>
+  </ngx-spinner>
+
+
+
+<!-- <mat-card class="card">
+
+</mat-card> -->

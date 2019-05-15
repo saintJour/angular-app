@@ -31,6 +31,10 @@ export class DocumentService {
       }
     );
   }
+  
+  download(id: number){
+    return this.http.get(`${API}/documents/${id}/download`, {responseType: 'blob', observe: 'response'});
+  }
 
   getAllFromCurrentUser(){
     return this.http.get<Document[]>(`${API}/profile/documents`);

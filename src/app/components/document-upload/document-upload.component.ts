@@ -66,7 +66,7 @@ export class DocumentUploadComponent implements OnInit {
 
   changeFileInput(e) {
     this.selectedFile = e.target.files[0];
-    this.firstFormGroup.get('name').setValue(this.selectedFile.name);
+    this.firstFormGroup.get('name').setValue(this.selectedFile.name.replace(/\.[^/.]+$/, ""));
   }
 
   changeIns(event){
