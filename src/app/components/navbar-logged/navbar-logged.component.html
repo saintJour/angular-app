@@ -1,1 +1,25 @@
-<mat-toolbar class="mat-elevation-z4" color="primary" >Panel de administración</mat-toolbar>
+<mat-toolbar class="mat-elevation-z4" color="primary">
+    <div>
+        <span>Apuntes</span>
+    </div>
+    <span class="fill-space"></span>
+    <div>
+        <mat-form-field floatLabel="never" (keyup.enter)="doSearch(query)">
+          <mat-label>Buscar documentos, asignaturas y más...</mat-label>
+          <input matInput [(ngModel)]="query">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+    <span class="fill-space"></span>
+    <div style="float: right">
+        <button mat-button [matMenuTriggerFor]="afterMenu">Mi Cuenta</button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+                <button mat-menu-item [routerLink]="['']">Mi Perfil</button>
+                <button mat-menu-item [routerLink]="['/upload']">Subir Documento</button>
+                <button mat-menu-item [routerLink]="['/mydocs']">Documentos Subidos</button>
+                <button mat-menu-item [routerLink]="['']">Documentos Guardados</button>
+                <button mat-menu-item [routerLink]="['/institutions']">Instituciones</button>
+                <button mat-menu-item (click)="logOut()">Cerrar Sesión</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

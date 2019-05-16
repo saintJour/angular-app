@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent},
-  { path: 'verify', component: VerifyComponent},
+  { path: 'verify/:token', component: VerifyComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'mydocs', component: MydocsComponent},
   { path: 'documents/:id', component: DocumentDetailComponent},

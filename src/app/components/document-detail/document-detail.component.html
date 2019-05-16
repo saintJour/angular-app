@@ -33,13 +33,14 @@
       <div fxLayout="column" fxLayoutAlign="center center">
         <div>
             <button mat-icon-button (click)="prev()"> 
-              <mat-icon aria-label="Example icon-button with a heart icon">navigate_before</mat-icon>
+              <mat-icon>navigate_before</mat-icon>
             </button>
-            <mat-form-field style="width: 1em">
-                <input matInput [(ngModel)]="page">
-              </mat-form-field>
+            <mat-form-field style="width: 1.5em">
+              <input matInput [(ngModel)]="page">
+            </mat-form-field>
+            <span>/ {{numPages}}</span>
             <button mat-icon-button (click)="next()">
-              <mat-icon aria-label="Example icon-button with a heart icon">navigate_next</mat-icon>
+              <mat-icon>navigate_next</mat-icon>
             </button>
         </div>
         <pdf-viewer

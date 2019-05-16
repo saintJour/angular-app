@@ -43,6 +43,7 @@ import {MatListModule} from '@angular/material/list';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MatListModule,
     StarRatingModule.forRoot(),
     MatStepperModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatMenuModule
   ],
   providers: [
     {

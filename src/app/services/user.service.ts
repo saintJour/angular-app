@@ -16,4 +16,8 @@ export class UserService {
     return this.http.post(`${API}/register`, user, { responseType: 'text', observe: 'response' });
   }
 
+  verify(token: string){
+    return this.http.get(`${API}/register/verify/?emailToken=${token}`, {observe: 'response'});
+  }
+
 }

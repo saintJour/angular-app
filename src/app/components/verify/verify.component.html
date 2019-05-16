@@ -1,3 +1,10 @@
-<p>
-  verify works!
-</p>
+<mat-toolbar class="toolbar">Verificar Cuenta</mat-toolbar>
+
+<h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3">
+  Por favor, presione el botón para verificar su cuenta: 
+  <button style="margin-left: 1em" mat-raised-button color="primary" (click)="verify()">Verificar</button>
+</h3>
+
+<ngx-spinner type="timer">
+    <p style="color: white"> Verificando... </p>
+  </ngx-spinner>
