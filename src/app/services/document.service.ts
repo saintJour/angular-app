@@ -44,4 +44,12 @@ export class DocumentService {
     return this.http.get<Document>(`${API}/documents/${id}`);
   }
 
+  update(id: number, document: any){
+    return this.http.put(`${API}/profile/documents/${id}`, document, {observe: 'response'});
+  }
+
+  delete(id: number){
+    return this.http.delete(`${API}/profile/documents/${id}`, {observe: 'response'});
+  }
+
 }

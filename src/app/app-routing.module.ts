@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'mydocs', component: MydocsComponent},
   { path: 'documents/:id', component: DocumentDetailComponent},
-  { path: 'edit-document', component: EditDocumentComponent},
+  { path: 'edit-document/:id', component: EditDocumentComponent},
   { path: 'institutions', component: InstitutionsComponent},
   { path: 'institutions/:id', component: InstitutionDetailComponent},
   { path: 'institutions/:institutionId/programs/:programId', component: ProgramComponent},

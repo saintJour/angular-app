@@ -1,3 +1,88 @@
-<p>
-  edit-document works!
-</p>
+<mat-toolbar>Editar Documento</mat-toolbar>
+
+<mat-card class="card">
+
+  <mat-card-content>
+
+    <form class="ex-container" [formGroup]="form">
+
+      <mat-form-field>
+        <input formControlName="name" matInput placeholder="Nombre">
+        <mat-error>Campo obligatorio</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="description" matInput placeholder="Descripción">
+        <mat-error>Campo obligatorio</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Institución</mat-label>
+        <mat-select formControlName="institution">
+          <mat-option *ngFor="let ins of institutions" [value]="ins" (onSelectionChange)="changeIns($event)">
+            {{ins.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+          <mat-label>Carrera</mat-label>
+          <mat-select formControlName="program">
+              <mat-option *ngFor="let program of programs" [value]="program" (onSelectionChange)="changeProgram($event)">
+                {{program.name}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+          <mat-label>Semestre</mat-label>
+          <mat-select formControlName="semester">
+            <mat-option *ngFor="let semester of semesters" [value]="semester" (onSelectionChange)="changeSemester($event)">
+              {{semester.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field>
+            <mat-label>Asignatura</mat-label>
+            <mat-select formControlName="CourseId">
+                <mat-option *ngFor="let course of courses" [value]="course.id">
+                  {{course.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="type">
+              <mat-option value="note">
+                Apunte
+              </mat-option>
+              <mat-option value="book">
+                Libro
+              </mat-option>
+              <mat-option value="exam">
+                Prueba
+              </mat-option>
+              <mat-option value="test">
+                Control
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" formControlName="year" placeholder="Año" required>
+            <mat-error>El año del documento debe estar entre 1980 y {{year}}</mat-error>
+        </mat-form-field>
+
+      <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="update()">Guardar</button>
+
+    </form>
+
+  </mat-card-content>
+
+</mat-card>
+
+<ngx-spinner type="timer">
+  <p style="color: white"> Guardando cambios... </p>
+</ngx-spinner>

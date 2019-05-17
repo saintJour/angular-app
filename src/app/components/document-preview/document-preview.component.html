@@ -20,9 +20,13 @@
                 {{document.year}}
                 <br>
                 <!-- <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating> -->
-                <button *ngIf="isEditable" style="margin-right: 2em" mat-stroked-button color="primary" [routerLink]="['/edit-document']">Editar</button>
-                <button *ngIf="isEditable" mat-stroked-button color="warn">Eliminar</button>
+                <button *ngIf="isEditable" style="margin-right: 2em" mat-stroked-button color="primary" [routerLink]="['/edit-document/' + document.id]">Editar</button>
+                <button *ngIf="isEditable" mat-stroked-button color="warn" (click)="deleteDoc($event)">Eliminar</button>
             </p>
         </div>
     </mat-card>
 </div>
+
+<ngx-spinner type="timer">
+    <p style="color: white"> Eliminando... </p>
+</ngx-spinner>

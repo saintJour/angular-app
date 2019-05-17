@@ -1,0 +1,13 @@
+.ex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    width: 20em;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 1em; 
+    margin-bottom: 1em; 
+}
