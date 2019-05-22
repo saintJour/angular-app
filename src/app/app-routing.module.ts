@@ -15,6 +15,7 @@ import { SemesterComponent } from './components/semester/semester.component';
 import { CourseComponent } from './components/course/course.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
+import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId', component: SemesterComponent},
   { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId/courses/:courseId', component: CourseComponent},
   { path: 'search/:query', component: SearchResultsComponent},
-  { path: 'upload', component: DocumentUploadComponent}
+  { path: 'upload', component: DocumentUploadComponent},
+  { path: 'advanced-search', component: AdvancedSearchComponent }
 ];
 
 @NgModule({

@@ -44,6 +44,8 @@ import { DocumentUploadComponent } from './components/document-upload/document-u
 import {MatStepperModule} from '@angular/material/stepper';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {MatMenuModule} from '@angular/material/menu';
+import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
+import {SliderModule} from 'primeng/slider';
 
 
 @NgModule({
@@ -67,7 +69,8 @@ import {MatMenuModule} from '@angular/material/menu';
     SemesterComponent,
     CourseComponent,
     SearchResultsComponent,
-    DocumentUploadComponent
+    DocumentUploadComponent,
+    AdvancedSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +95,8 @@ import {MatMenuModule} from '@angular/material/menu';
     StarRatingModule.forRoot(),
     MatStepperModule,
     PdfViewerModule,
-    MatMenuModule
+    MatMenuModule,
+    SliderModule
   ],
   providers: [
     {

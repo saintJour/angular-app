@@ -11,6 +11,7 @@
     <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center center">
       <app-document-preview [isEditable]="false" [document]="document" *ngFor="let document of documents"></app-document-preview>
     </div>
+    <button mat-stroked-button color="primary" (click)="goToAdvanced()">Ampliar Búsqueda</button>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>

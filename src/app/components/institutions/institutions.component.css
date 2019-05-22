@@ -10,5 +10,6 @@
 }
 
 .card-image{
-    height: 200px;
+    max-height: 150px;
+    max-width: 300px;
 }

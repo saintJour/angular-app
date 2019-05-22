@@ -52,4 +52,8 @@ export class DocumentService {
     return this.http.delete(`${API}/profile/documents/${id}`, {observe: 'response'});
   }
 
+  filtered(params: any){
+    return this.http.post<Document[]>(`${API}/documents/filter`, params);
+  }
+
 }

@@ -54,4 +54,8 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToAdvanced(){
+    this.router.navigate(['/advanced-search', {name: this.query}]);
+  }
+
 }

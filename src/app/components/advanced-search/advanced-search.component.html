@@ -1,0 +1,56 @@
+<mat-toolbar class="toolbar">Búsqueda Avanzada</mat-toolbar>
+
+<div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="start">
+  <div>
+    <mat-card class="card">
+        <div fxLayout="column" fxLayoutAlign="center">
+          <div style="text-align: center">
+            <h3>Filtro</h3>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput name="name" type="text" placeholder="Nombre"  [(ngModel)]="name">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Tipo</mat-label>
+              <mat-select [(ngModel)]="selectedTypes" multiple>
+                  <mat-option value="note">
+                      Apunte
+                    </mat-option>
+                    <mat-option value="book">
+                      Libro
+                    </mat-option>
+                    <mat-option value="exam">
+                      Prueba
+                    </mat-option>
+                    <mat-option value="test">
+                      Control
+                    </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <h4>Rating: {{ratingValues[0] + ' - ' + ratingValues[1]}}</h4>
+            <p-slider [(ngModel)]="ratingValues" [style]="{'width':'12em'}" [range]="true" [min]="1" [max]="5"></p-slider>
+          </div>
+          <div>
+            <h4>Año: {{yearValues[0] + ' - ' + yearValues[1]}}</h4>
+            <p-slider [(ngModel)]="yearValues" [style]="{'width':'12em'}" [range]="true" [min]="1980" [max]="2019"></p-slider>
+          </div>
+          <div style="text-align: center">
+            <br> 
+            <button mat-stroked-button color="accent">Aplicar</button>
+          </div>
+        </div>
+      </mat-card>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center">
+      <app-document-preview [isEditable]="false" [document]="document" *ngFor="let document of documents"></app-document-preview>
+  </div>
+</div>
+
+
+
+
