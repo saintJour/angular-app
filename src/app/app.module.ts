@@ -46,6 +46,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {MatMenuModule} from '@angular/material/menu';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import {SliderModule} from 'primeng/slider';
+import { TagInputModule } from 'ngx-chips';
 
 
 @NgModule({
@@ -96,7 +97,8 @@ import {SliderModule} from 'primeng/slider';
     MatStepperModule,
     PdfViewerModule,
     MatMenuModule,
-    SliderModule
+    SliderModule,
+    TagInputModule
   ],
   providers: [
     {

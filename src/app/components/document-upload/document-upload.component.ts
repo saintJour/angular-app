@@ -7,6 +7,8 @@ import { CourseService } from 'src/app/services/course.service';
 import { InstitutionService } from 'src/app/services/institution.service';
 import { ProgramService } from 'src/app/services/program.service';
 import { DocumentService } from 'src/app/services/document.service';
+import { Tag } from 'src/app/models/tag.model';
+import { TagService } from 'src/app/services/tag.service';
 
 @Component({
   selector: 'app-document-upload',
@@ -27,6 +29,8 @@ export class DocumentUploadComponent implements OnInit {
   programId: number;
   semId: number;
   year: number;
+  tags: Tag[];
+  selectedTags: any[];
 
   constructor(
     private instSvc: InstitutionService,
@@ -34,6 +38,7 @@ export class DocumentUploadComponent implements OnInit {
     private semSvc: SemesterService,
     private courseSvc: CourseService,
     private docSvc: DocumentService,
+    private tagSvc: TagService,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private notifier: NotifierService
@@ -41,7 +46,13 @@ export class DocumentUploadComponent implements OnInit {
 
     this.year = new Date().getFullYear();
 
-    instSvc.getAll().subscribe(data => {
+    this.tagSvc.getAll()
+    .subscribe(tags => {
+      this.tags = tags;
+      console.log("TAGS", this.tags);
+    });
+
+    this.instSvc.getAll().subscribe(data => {
       this.institutions = data;
     });
 
@@ -98,7 +109,11 @@ export class DocumentUploadComponent implements OnInit {
   submit(){
     this.spinner.show();
     this.form = Object.assign(this.firstFormGroup.value, this.secondFormGroup.value);
-    console.log("Merged Form: ", this.form);
+    let sTags = [];
+    this.selectedTags.forEach(tag => {
+      sTags.push(tag.display);
+    });
+    this.form['tags'] = sTags;
     this.docSvc.upload(this.form, this.selectedFile)
     .subscribe(res => {
       if(res.status == 201){

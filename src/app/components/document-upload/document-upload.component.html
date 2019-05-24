@@ -86,6 +86,17 @@
               <mat-error>El año del documento debe estar entre 1980 y {{year}}</mat-error>
           </mat-form-field>
 
+          <tag-input 
+            [placeholder]="'Nuevo tag'"
+            [secondaryPlaceholder]="'Agregar tags'"
+            [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="selectedTags" 
+            [maxItems]='5'
+            [separatorKeyCodes]="[188, 13, 32]">
+            <tag-input-dropdown [autocompleteItems]="tags" [identifyBy]="'id'" [displayBy]="'name'">
+            </tag-input-dropdown>
+          </tag-input>
+          <br>
       <div>
         <button mat-stroked-button color="primary" matStepperNext>Siguiente</button>
       </div>
