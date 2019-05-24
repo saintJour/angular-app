@@ -17,15 +17,9 @@ import { Course } from 'src/app/models/course.model';
 })
 export class CourseComponent implements OnInit {
 
-  institutionId: number;
-  semesterId: number;
-  programId: number;
   courseId: number;
   documents: Document[];
-  institution: Institution;
-  program: Program;
-  semester: Semester;
-  course: Course;
+  courseInfo: any;
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -37,36 +31,17 @@ export class CourseComponent implements OnInit {
   ) { 
     this.actRoute.params
     .subscribe(params => {
-      this.institutionId = params['institutionId'];
-      this.programId = params['programId'];
-      this.semesterId = params['semesterId'];
-      this.courseId = params['courseId'];
+      this.courseId = params['id'];
     });
 
-    this.instSvc.getOne(this.institutionId)
-    .subscribe(data => {
-      this.institution = data;
+    this.courseSvc.getDocumentsByCourseId(this.courseId)
+    .subscribe(docs => {
+      this.documents = docs;
     });
 
-    this.programSvc.getOne(this.institutionId, this.programId)
-    .subscribe(data => {
-      this.program = data;
-    });
-
-    this.semesterSvc.getOne(this.institutionId, this.programId, this.semesterId)
-    .subscribe(data => {
-      this.semester = data;
-    });
-
-    this.courseSvc.getOne(this.institutionId, this.programId, this.semesterId, this.courseId)
-    .subscribe(data => {
-      console.log('DATA COURSE: ', data);
-      this.course = data;
-    });
-
-    this.courseSvc.getDocuments(this.institutionId, this.programId, this.semesterId, this.courseId)
-    .subscribe(data => {
-      this.documents = data;
+    this.courseSvc.getInfo(this.courseId)
+    .subscribe(info => {
+      this.courseInfo = info;
     });
   }
 

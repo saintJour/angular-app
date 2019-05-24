@@ -2,7 +2,7 @@
 
 <div fxLayout="row wrap" fxLayoutGap="30px grid" fxLayoutAlign="center center">
   <div *ngFor="let program of programs">
-    <mat-card class="card" [routerLink] = "['/institutions/' + institution.id + '/programs/' + program.id]">
+    <mat-card class="card" [routerLink] = "['/programs/' + program.id]">
       <mat-card-header style="height: 50px">
         <mat-card-title>{{program.name}}</mat-card-title>
       </mat-card-header>

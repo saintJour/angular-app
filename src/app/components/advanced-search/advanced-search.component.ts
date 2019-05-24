@@ -12,32 +12,55 @@ export class AdvancedSearchComponent implements OnInit {
 
   documents: Document[];
   name: string;
-  types: string[];
-  selectedTypes: string[];
-  yearFrom: string;
-  yearTo: string;
-  yearValues: string[];
-  ratingFrom: string;
-  ratingTo: string;
-  ratingValues: string[];
+  types: string[] = [];
+  yearFrom: number;
+  yearTo: number;
+  yearValues: number[] = [];
+  ratingFrom: number;
+  ratingTo: number;
+  ratingValues: number[] = [];
 
   constructor(
     private actRoute: ActivatedRoute,
     private router: Router,
     private docSvc: DocumentService
   ) {
-    this.yearValues = ["1980", "2019"];
-    this.ratingValues = ["1", "5"];
-    this.name = this.actRoute.snapshot.paramMap.get('name');
+    this.actRoute.queryParams
+    .subscribe(params => {
+      this.name = params['name'] || "";
+      this.yearValues[0] = Number(params['yearFrom']) || 2000;
+      this.yearValues[1] = Number(params['yearTo']) || new Date().getFullYear();
+      this.ratingValues[0] = Number(params['ratingFrom']) || 1;
+      this.ratingValues[1] = Number(params['ratingTo']) || 5;
+      this.types = params['types'] || ["note", "book", "exam", "test"];
+    });
+
     this.docSvc.filtered({
-      name: this.name
+      name: this.name,
+      yearFrom: this.yearValues[0],
+      yearTo: this.yearValues[1],
+      ratingFrom: this.ratingValues[0],
+      ratingTo: this.ratingValues[1],
+      types: this.types
     }).subscribe(docs => {
       this.documents = docs;
     });
    }
 
-  ngOnInit() {
-    
+  ngOnInit() { }
+
+  doFilter(){
+    let params = {
+      name: this.name,
+      yearFrom: this.yearValues[0],
+      yearTo: this.yearValues[1],
+      ratingFrom: this.ratingValues[0],
+      ratingTo: this.ratingValues[1],
+      types: this.types
+    };
+    this.router.navigateByUrl('', {skipLocationChange: true}).then(() => {
+      this.router.navigate(['/advanced-search'], {queryParams: params});
+    });
   }
 
 }

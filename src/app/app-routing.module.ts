@@ -28,12 +28,11 @@ const routes: Routes = [
   { path: 'edit-document/:id', component: EditDocumentComponent},
   { path: 'institutions', component: InstitutionsComponent},
   { path: 'institutions/:id', component: InstitutionDetailComponent},
-  { path: 'institutions/:institutionId/programs/:programId', component: ProgramComponent},
-  { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId', component: SemesterComponent},
-  { path: 'institutions/:institutionId/programs/:programId/semesters/:semesterId/courses/:courseId', component: CourseComponent},
+  { path: 'programs/:id', component: ProgramComponent},
+  { path: 'courses/:id', component: CourseComponent},
   { path: 'search/:query', component: SearchResultsComponent},
   { path: 'upload', component: DocumentUploadComponent},
-  { path: 'advanced-search', component: AdvancedSearchComponent }
+  { path: 'advanced-search', component: AdvancedSearchComponent}
 ];
 
 @NgModule({

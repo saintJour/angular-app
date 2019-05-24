@@ -57,7 +57,7 @@ export class DocumentUploadComponent implements OnInit {
       semester: [''],
       CourseId: [Validators.required],
       type: ['', Validators.required],
-      year: ['', [Validators.required, Validators.min(1980), Validators.max(this.year)]]
+      year: ['', [Validators.required, Validators.min(2000), Validators.max(this.year)]]
     });
   }
 

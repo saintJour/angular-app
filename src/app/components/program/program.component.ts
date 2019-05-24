@@ -29,23 +29,21 @@ export class ProgramComponent implements OnInit {
   ) {
     this.actRoute.params
     .subscribe(params => {
-      this.institutionId = params['institutionId'];
-      this.programId = params['programId'];
+      this.programId = params['id'];
     });
 
-    this.semesterSvc.getAll(this.institutionId, this.programId)
-    .subscribe(data => {
-      this.semesters = data;
-    });
-
-    this.instSvc.getOne(this.institutionId)
-    .subscribe(data => {
-      this.institution = data;
-    });
-
-    this.programSvc.getOne(this.institutionId, this.programId)
+    this.programSvc.getOneById(this.programId)
     .subscribe(data => {
       this.program = data;
+      this.instSvc.getOne(this.program.InstitutionId)
+      .subscribe(data => {
+        this.institution = data;
+      });
+    });
+
+    this.semesterSvc.getAllByProgramId(this.programId)
+    .subscribe(data => {
+      this.semesters = data;
     });
 
    }

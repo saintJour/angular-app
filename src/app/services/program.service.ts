@@ -16,6 +16,10 @@ export class ProgramService {
     return this.http.get<Program>(`${API}/institutions/${institutionId}/programs/${programId}`);
   }
 
+  getOneById(id: number){
+    return this.http.get<Program>(`${API}/program/${id}`);
+  }
+
   getAll(institutionId: number){
     return this.http.get<Program[]>(`${API}/institutions/${institutionId}/programs`);
   }

@@ -17,8 +17,16 @@ export class CourseService {
     return this.http.get<Course>(`${API}/institutions/${institutionId}/programs/${programId}/semesters/${semesterId}/courses/${courseId}`);
   }
 
+  getOneById(id: number){
+    return this.http.get<Course>(`${API}/course/${id}`);
+  }
+
   getAll(institutionId: number, programId: number, semesterId: number){
     return this.http.get<Course[]>(`${API}/institutions/${institutionId}/programs/${programId}/semesters/${semesterId}/courses`);
+  }
+
+  getAllBySemesterId(id: number){
+    return this.http.get<Course[]>(`${API}/semester/${id}/courses`);
   }
 
   getInfo(id: number){
@@ -27,6 +35,10 @@ export class CourseService {
 
   getDocuments(institutionId: number, programId:number, semesterId: number, courseId: number){
     return this.http.get<Document[]>(`${API}/institutions/${institutionId}/programs/${programId}/semesters/${semesterId}/courses/${courseId}/documents`);
+  }
+
+  getDocumentsByCourseId(id: number){
+    return this.http.get<Document[]>(`${API}/course/${id}/documents`);
   }
 
 }

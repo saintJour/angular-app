@@ -1,6 +1,6 @@
 <mat-toolbar class="toolbar">Búsqueda Avanzada</mat-toolbar>
 
-<div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="start">
+<div fxLayout="row" fxLayoutGap="20px grid" fxLayoutAlign="start">
   <div>
     <mat-card class="card">
         <div fxLayout="column" fxLayoutAlign="center">
@@ -15,7 +15,7 @@
           <div>
             <mat-form-field>
               <mat-label>Tipo</mat-label>
-              <mat-select [(ngModel)]="selectedTypes" multiple>
+              <mat-select [(ngModel)]="types" multiple>
                   <mat-option value="note">
                       Apunte
                     </mat-option>
@@ -37,11 +37,11 @@
           </div>
           <div>
             <h4>Año: {{yearValues[0] + ' - ' + yearValues[1]}}</h4>
-            <p-slider [(ngModel)]="yearValues" [style]="{'width':'12em'}" [range]="true" [min]="1980" [max]="2019"></p-slider>
+            <p-slider [(ngModel)]="yearValues" [style]="{'width':'12em'}" [range]="true" [min]="2000" [max]="2019"></p-slider>
           </div>
           <div style="text-align: center">
             <br> 
-            <button mat-stroked-button color="accent">Aplicar</button>
+            <button mat-stroked-button color="accent" (click)="doFilter()">Aplicar</button>
           </div>
         </div>
       </mat-card>

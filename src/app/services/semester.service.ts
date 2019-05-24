@@ -16,6 +16,10 @@ export class SemesterService {
     return this.http.get<Semester[]>(`${API}/institutions/${institutionId}/programs/${programId}/semesters`);
   }
 
+  getAllByProgramId(id: number){
+    return this.http.get<Semester[]>(`${API}/program/${id}/semesters`);
+  }
+
   getOne(institutionId: number, programId: number, semesterId: number){
     return this.http.get<Semester>(`${API}/institutions/${institutionId}/programs/${programId}/semesters/${semesterId}`);
   }
