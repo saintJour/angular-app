@@ -1,0 +1,45 @@
+#hero {
+	background-color: #f6f8f9;
+}
+
+#hero h1 {
+	font-size: 50px;
+	font-weight: 300;
+}
+
+#hero p {
+	font-size: 24px;
+    font-weight: 300;
+    color: #8da2b5;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#hero span {
+	font-weight: 400;
+    color: #0095f7;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+#hero img {
+    margin-top: 4em;
+}
+
+.btn-regular {
+	background-color: #0095f7;
+	color: #ffffff;
+	padding: 10px 25px;
+	letter-spacing: .1em;
+	margin-top: 25px;
+	display: inline-block;
+}
+
+.content-box {
+	padding: 60px 20px;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #3a3f52;
+}

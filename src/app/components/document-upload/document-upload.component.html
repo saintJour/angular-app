@@ -92,7 +92,7 @@
             [ngModelOptions]="{standalone: true}"
             [(ngModel)]="selectedTags" 
             [maxItems]='5'
-            [separatorKeyCodes]="[188, 13, 32]">
+            [separatorKeyCodes]="[188, 13]">
             <tag-input-dropdown [autocompleteItems]="tags" [identifyBy]="'id'" [displayBy]="'name'">
             </tag-input-dropdown>
           </tag-input>

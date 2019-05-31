@@ -39,6 +39,19 @@
             <h4>Año: {{yearValues[0] + ' - ' + yearValues[1]}}</h4>
             <p-slider [(ngModel)]="yearValues" [style]="{'width':'12em'}" [range]="true" [min]="2000" [max]="2019"></p-slider>
           </div>
+          <div>
+            <tag-input 
+              [placeholder]="'Agregar tag'"
+              [secondaryPlaceholder]="'Agregar tag'"
+              [ngModelOptions]="{standalone: true}"
+              [(ngModel)]="tags" 
+              [maxItems]='5'
+              [separatorKeyCodes]="[188, 13]"
+              [onlyFromAutocomplete]="true">
+              <tag-input-dropdown [autocompleteItems]="providedTags" [identifyBy]="'id'" [displayBy]="'name'">
+              </tag-input-dropdown>
+            </tag-input>
+          </div>
           <div style="text-align: center">
             <br> 
             <button mat-stroked-button color="accent" (click)="doFilter()">Aplicar</button>
