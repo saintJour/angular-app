@@ -20,4 +20,8 @@ export class UserService {
     return this.http.get(`${API}/register/verify/?emailToken=${token}`, {observe: 'response'});
   }
 
+  current(){
+    return this.http.get<User>(`${API}/profile/`);
+  }
+
 }

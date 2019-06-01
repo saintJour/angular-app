@@ -22,7 +22,7 @@
     <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="institutions?.length == 0">Sin resultados</h3>
     <mat-nav-list>
       <div *ngFor="let institution of institutions">
-        <mat-list-item>{{institution?.name}}</mat-list-item>
+        <mat-list-item [routerLink]="['/institutions/' + institution.id]">{{institution?.name}}</mat-list-item>
         <mat-divider></mat-divider>
       </div>
     </mat-nav-list>
@@ -36,7 +36,7 @@
     <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="programs?.length == 0">Sin resultados</h3>
     <mat-nav-list>
       <div *ngFor="let program of programs">
-        <mat-list-item>{{program?.name}}</mat-list-item>
+        <mat-list-item [routerLink]="['/programs/' + program.id]">{{program?.name}}</mat-list-item>
         <mat-divider></mat-divider>
       </div>
     </mat-nav-list>
@@ -50,7 +50,7 @@
     <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="courses?.length == 0">Sin resultados</h3>
     <mat-nav-list>
       <div *ngFor="let course of courses">
-        <mat-list-item>{{course?.name}}</mat-list-item>
+        <mat-list-item [routerLink]="['/courses/' + course.id]">{{course?.name}}</mat-list-item>
         <mat-divider></mat-divider>
       </div>
     </mat-nav-list>

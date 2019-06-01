@@ -113,7 +113,7 @@ export class EditDocumentComponent implements OnInit {
     },
     err => {
       this.spinner.hide();
-      this.notifier.notify( 'success', 'No se ha podido editar el Documento');
+      this.notifier.notify( 'error', 'No se ha podido editar el Documento');
       this.router.navigate(['/mydocs']);
     });
   }

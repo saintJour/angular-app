@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('REQ_URL', request.url);
-    if(request.url.includes('profile') || request.url.includes('ratings')){
+    if(request.url.includes('profile') || request.url.includes('ratings') || request.url.includes('admin')){
         request = request.clone({
             setHeaders: {
               Authorization: `Bearer ${this.auth.getToken()}`

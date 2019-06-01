@@ -2,7 +2,7 @@
     <mat-card class="card" [routerLink]="['/documents/' + document.id]">
         <div fxLayout="row" fxLayoutGap="20px">
             <img class="doc-thumbnail" src="/assets/img/document_thumbnail.jpg">
-            <p style="width: 300px !important;height: 100px !important">
+            <p style="width: 320px !important;height: 180px !important">
                 <b>{{document.name}}</b>
                 <mat-chip-list>
                     <mat-chip color="primary" *ngIf="document.type == 'note'">apunte</mat-chip>
@@ -12,16 +12,18 @@
                     <mat-chip color="primary" *ngIf="!document.approved">pendiente</mat-chip>
                     <mat-chip color="primary" *ngIf="document.approved">aprobado</mat-chip>
                 </mat-chip-list>
-                <br>
                 {{courseInfo.course}}
                 <br>
                 {{courseInfo.program}}, {{courseInfo.institution}}
                 <br>
                 {{document.year}}
                 <br>
+                <span *ngIf="document.rating; else noRating"><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>{{document?.rating}}</span>
+                <ng-template #noRating><span><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>sin rating</span></ng-template>
                 <!-- <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating> -->
-                <button *ngIf="isEditable" style="margin-right: 2em" mat-stroked-button color="primary" [routerLink]="['/edit-document/' + document.id]">Editar</button>
-                <button *ngIf="isEditable" mat-stroked-button color="warn" (click)="deleteDoc($event)">Eliminar</button>
+                <br>
+                <button *ngIf="isEditable" style="margin-right: 2em" mat-icon-button color="primary" [routerLink]="['/edit-document/' + document.id]"><mat-icon>edit</mat-icon></button>
+                <button *ngIf="isEditable" mat-icon-button color="warn" (click)="deleteDoc($event)"><mat-icon>delete</mat-icon></button>
             </p>
         </div>
     </mat-card>

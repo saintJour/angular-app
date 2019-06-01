@@ -30,7 +30,7 @@ export class DocumentUploadComponent implements OnInit {
   semId: number;
   year: number;
   tags: Tag[];
-  selectedTags: any[];
+  selectedTags: any[] = [];
 
   constructor(
     private instSvc: InstitutionService,
@@ -109,11 +109,15 @@ export class DocumentUploadComponent implements OnInit {
   submit(){
     this.spinner.show();
     this.form = Object.assign(this.firstFormGroup.value, this.secondFormGroup.value);
-    let sTags = [];
-    this.selectedTags.forEach(tag => {
-      sTags.push(tag.display);
-    });
-    this.form['tags'] = sTags;
+    
+    if(this.selectedTags.length > 0){
+      let sTags = [];
+      this.selectedTags.forEach(tag => {
+        sTags.push(tag.display);
+      });
+      this.form['tags'] = sTags;
+    }
+    
     this.docSvc.upload(this.form, this.selectedFile)
     .subscribe(res => {
       if(res.status == 201){

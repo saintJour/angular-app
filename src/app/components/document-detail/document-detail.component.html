@@ -23,9 +23,9 @@
           <mat-chip-list>
               <mat-chip color="primary" *ngFor="let tag of document.tags">{{tag}}</mat-chip>
           </mat-chip-list>
-          <br>
-          <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating>
-          <br>
+          <span *ngIf="document.rating; else noRating"><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>{{document?.rating}}</span>
+          <ng-template #noRating><span><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>sin rating</span></ng-template>
+          <br><br>
           <button style="width: 130px; text-align: center; margin-right: 1em" mat-stroked-button color="primary" [routerLink]="['']"><mat-icon>save</mat-icon> Guardar</button>
           <button style="width: 130px" mat-stroked-button color="primary" (click)="download()"><mat-icon>cloud_download</mat-icon> Descargar</button>
           <br>
@@ -56,8 +56,8 @@
 </mat-card>
 
 <ngx-spinner type="timer">
-    <p style="color: white"> Descargando... </p>
-  </ngx-spinner>
+  <p style="color: white"> Descargando... </p>
+</ngx-spinner>
 
 
 

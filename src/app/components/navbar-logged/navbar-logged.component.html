@@ -15,6 +15,7 @@
         <button mat-button [matMenuTriggerFor]="afterMenu">Mi Cuenta</button>
         <mat-menu #afterMenu="matMenu" xPosition="after">
                 <button mat-menu-item [routerLink]="['']">Mi Perfil</button>
+                <button *ngIf="currUser?.role === 'admin'" mat-menu-item [routerLink]="['/admin']">Admin</button>
                 <button mat-menu-item [routerLink]="['/upload']">Subir Documento</button>
                 <button mat-menu-item [routerLink]="['/mydocs']">Documentos Subidos</button>
                 <button mat-menu-item [routerLink]="['']">Documentos Guardados</button>

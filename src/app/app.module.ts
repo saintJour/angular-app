@@ -47,6 +47,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import {SliderModule} from 'primeng/slider';
 import { TagInputModule } from 'ngx-chips';
+import { AdminComponent } from './components/admin/admin.component';
+import { MatTableModule } from '@angular/material';
 
 
 @NgModule({
@@ -71,7 +73,8 @@ import { TagInputModule } from 'ngx-chips';
     CourseComponent,
     SearchResultsComponent,
     DocumentUploadComponent,
-    AdvancedSearchComponent
+    AdvancedSearchComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,8 @@ import { TagInputModule } from 'ngx-chips';
     PdfViewerModule,
     MatMenuModule,
     SliderModule,
-    TagInputModule
+    TagInputModule,
+    MatTableModule
   ],
   providers: [
     {

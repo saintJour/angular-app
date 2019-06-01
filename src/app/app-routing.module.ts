@@ -16,6 +16,7 @@ import { CourseComponent } from './components/course/course.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'courses/:id', component: CourseComponent},
   { path: 'search/:query', component: SearchResultsComponent},
   { path: 'upload', component: DocumentUploadComponent},
-  { path: 'advanced-search', component: AdvancedSearchComponent}
+  { path: 'advanced-search', component: AdvancedSearchComponent},
+  { path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
