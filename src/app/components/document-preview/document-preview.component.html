@@ -24,11 +24,12 @@
                 <br>
                 <button *ngIf="isEditable" style="margin-right: 2em" mat-icon-button color="primary" [routerLink]="['/edit-document/' + document.id]"><mat-icon>edit</mat-icon></button>
                 <button *ngIf="isEditable" mat-icon-button color="warn" (click)="deleteDoc($event)"><mat-icon>delete</mat-icon></button>
+                <button *ngIf="isRemovable" mat-icon-button color="warn" (click)="deleteFromSavedDocs($event)"><mat-icon>delete</mat-icon></button>
             </p>
         </div>
     </mat-card>
 </div>
 
 <ngx-spinner type="timer">
-    <p style="color: white"> Eliminando... </p>
+    <p style="color: white"> Procesando... </p>
 </ngx-spinner>

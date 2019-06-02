@@ -1,0 +1,7 @@
+<mat-toolbar class="toolbar">Documentos Guardados</mat-toolbar>
+
+<h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="documents?.length == 0">Aún no has guardado documentos</h3>
+
+<div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center center">
+    <app-document-preview [isEditable]="false" [isRemovable]="true" [document]="document" *ngFor="let document of documents"></app-document-preview>
+</div>

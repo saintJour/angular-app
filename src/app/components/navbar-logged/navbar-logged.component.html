@@ -18,7 +18,7 @@
                 <button *ngIf="currUser?.role === 'admin'" mat-menu-item [routerLink]="['/admin']">Admin</button>
                 <button mat-menu-item [routerLink]="['/upload']">Subir Documento</button>
                 <button mat-menu-item [routerLink]="['/mydocs']">Documentos Subidos</button>
-                <button mat-menu-item [routerLink]="['']">Documentos Guardados</button>
+                <button mat-menu-item [routerLink]="['/saved-documents']">Documentos Guardados</button>
                 <button mat-menu-item [routerLink]="['/institutions']">Instituciones</button>
                 <button mat-menu-item (click)="logOut()">Cerrar Sesión</button>
         </mat-menu>

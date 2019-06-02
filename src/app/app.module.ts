@@ -49,6 +49,7 @@ import {SliderModule} from 'primeng/slider';
 import { TagInputModule } from 'ngx-chips';
 import { AdminComponent } from './components/admin/admin.component';
 import { MatTableModule } from '@angular/material';
+import { SavedDocumentsComponent } from './components/saved-documents/saved-documents.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { MatTableModule } from '@angular/material';
     SearchResultsComponent,
     DocumentUploadComponent,
     AdvancedSearchComponent,
-    AdminComponent
+    AdminComponent,
+    SavedDocumentsComponent
   ],
   imports: [
     BrowserModule,

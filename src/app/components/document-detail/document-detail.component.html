@@ -6,10 +6,10 @@
           <br>
           {{document?.description}}
           <mat-chip-list>
-              <mat-chip color="primary" *ngIf="document.type == 'note'">apunte</mat-chip>
-              <mat-chip color="primary" *ngIf="document.type == 'book'">libro</mat-chip>
-              <mat-chip color="primary" *ngIf="document.type == 'test'">control</mat-chip>
-              <mat-chip color="primary" *ngIf="document.type == 'exam'">prueba</mat-chip>
+              <mat-chip color="primary" *ngIf="document?.type == 'note'">apunte</mat-chip>
+              <mat-chip color="primary" *ngIf="document?.type == 'book'">libro</mat-chip>
+              <mat-chip color="primary" *ngIf="document?.type == 'test'">control</mat-chip>
+              <mat-chip color="primary" *ngIf="document?.type == 'exam'">prueba</mat-chip>
           </mat-chip-list>
           <br>
           {{courseInfo?.course}}
@@ -26,7 +26,7 @@
           <span *ngIf="document.rating; else noRating"><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>{{document?.rating}}</span>
           <ng-template #noRating><span><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>sin rating</span></ng-template>
           <br><br>
-          <button style="width: 130px; text-align: center; margin-right: 1em" mat-stroked-button color="primary" [routerLink]="['']"><mat-icon>save</mat-icon> Guardar</button>
+          <button *ngIf="logged" style="width: 130px; text-align: center; margin-right: 1em" mat-stroked-button color="primary" [disabled]="saved" (click)="save()"><mat-icon>save</mat-icon> Guardar</button>
           <button style="width: 130px" mat-stroked-button color="primary" (click)="download()"><mat-icon>cloud_download</mat-icon> Descargar</button>
           <br>
       </p>

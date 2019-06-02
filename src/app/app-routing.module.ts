@@ -17,6 +17,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { SavedDocumentsComponent } from './components/saved-documents/saved-documents.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'search/:query', component: SearchResultsComponent},
   { path: 'upload', component: DocumentUploadComponent},
   { path: 'advanced-search', component: AdvancedSearchComponent},
-  { path: 'admin', component: AdminComponent}
+  { path: 'admin', component: AdminComponent},
+  { path: 'saved-documents', component: SavedDocumentsComponent}
 ];
 
 @NgModule({

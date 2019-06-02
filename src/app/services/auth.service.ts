@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 const API: string = environment.BASE_URL;
 
@@ -11,10 +11,10 @@ const API: string = environment.BASE_URL;
 })
 export class AuthService {
 
-  public subject = new Subject<Boolean>()
+  public subject = new BehaviorSubject<Boolean>(false);
 
   constructor(
-    private http: HttpClient,
+    private http: HttpClient
   ) { }
 
   login(data){

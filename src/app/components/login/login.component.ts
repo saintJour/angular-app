@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.body.toString());
         localStorage.setItem('logged', 'ok');
         console.log(localStorage.getItem('token'));
+        console.log(localStorage.getItem('logged'));
         this.authSvc.emitTrue();
         this.spinner.hide();
         this.router.navigate(['/mydocs']);

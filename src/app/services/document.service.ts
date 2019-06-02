@@ -52,8 +52,24 @@ export class DocumentService {
     return this.http.delete(`${API}/profile/documents/${id}`, {observe: 'response'});
   }
 
+  //Filter from advanced search
+
   filtered(params: any){
     return this.http.post<Document[]>(`${API}/documents/filter`, params);
+  }
+
+  //Saved documents
+
+  getSaved(){
+    return this.http.get<[]>(`${API}/profile/saved_documents`);
+  }
+
+  deleteFromSavedDocs(id: number){
+    return this.http.delete(`${API}/profile/saved_documents/${id}`, {observe: 'response'});
+  }
+
+  save(id: number){
+    return this.http.post(`${API}/profile/saved_documents`, {DocumentId: id}, {observe: 'response'});
   }
 
 }

@@ -15,6 +15,7 @@ export class DocumentPreviewComponent implements OnInit {
 
   @Input() document: Document;
   @Input() isEditable: boolean;
+  @Input() isRemovable: boolean;
 
   courseInfo: any;
 
@@ -50,6 +51,25 @@ export class DocumentPreviewComponent implements OnInit {
     err => {
       this.spinner.hide();
       this.notifier.notify('error', 'No ha sido posible eliminar el documento');
+    });
+  }
+
+  deleteFromSavedDocs(event){
+    event.stopPropagation();
+    this.spinner.show();
+    this.docSvc.deleteFromSavedDocs(this.document.id)
+    .subscribe(res => {
+      if(res.status === 200){
+        this.spinner.hide();
+        this.notifier.notify('success', 'Se ha quitado el documento');
+        this.router.navigateByUrl('', {skipLocationChange: true}).then(() => {
+          this.router.navigate(['/saved-documents']);
+        });
+      }
+    },
+    err => {
+      this.spinner.hide();
+      this.notifier.notify('error', 'No ha sido posible quitar el documento');
     });
   }
 

@@ -7,6 +7,8 @@ import * as FileSaver from 'file-saver';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotifierService } from 'angular-notifier';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-document-detail',
@@ -20,13 +22,16 @@ export class DocumentDetailComponent implements OnInit {
   page: number;
   courseInfo: any;
   numPages: number;
-
+  logged: Boolean;
+  saved: Boolean = false;
+  
   constructor(
     private docSvc: DocumentService,
     private actRoute: ActivatedRoute,
     private courseSvc: CourseService,
     private spinner: NgxSpinnerService,
     private notifier: NotifierService,
+    private authSvc: AuthService
   ) { 
     this.page = 1;
 
@@ -43,10 +48,22 @@ export class DocumentDetailComponent implements OnInit {
         this.courseInfo = data;
       });
     });
+
+    this.authSvc.getSubject().subscribe(logged => {
+      this.logged = logged;
+    });
+
+    this.docSvc.getSaved()
+    .subscribe(savedDocs => {
+      savedDocs.forEach(savedDoc => {
+        if(savedDoc['DocumentId'] == this.docId){
+          this.saved = true;
+        }
+      });
+    });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   download(){
     this.spinner.show();
@@ -63,6 +80,19 @@ export class DocumentDetailComponent implements OnInit {
       this.spinner.hide();
       this.notifier.notify( 'error', 'No fue posible descargar el documento');
       console.log(err);
+    });
+  }
+
+  save(){
+    this.docSvc.save(this.docId)
+    .subscribe(res => {
+      if(res.status === 201){
+        this.notifier.notify( 'success', 'Se ha guardado el documento');
+        this.saved = true;
+      }
+    },
+    err => {
+      this.notifier.notify( 'error', 'No fue posible guardar el documento');
     });
   }
 

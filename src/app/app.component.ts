@@ -9,23 +9,24 @@ import { Subject } from 'rxjs';
 })
 export class AppComponent implements OnInit{
 
-  public subject: Subject<Boolean>;
-  public value: Boolean;
+  logged: Boolean;
 
   constructor(
     public authSvc: AuthService
-  ){}
-
-  ngOnInit() {
+  ){
+    // make any request to check if token is expirated
     if(localStorage.getItem('logged') === 'ok'){
       console.log('LOGGED: ', localStorage.getItem('logged'));
-      this.value = true;
+      this.authSvc.emitTrue();
+      this.logged = true;
     }
-    this.subject = this.authSvc.getSubject();
-    console.log(this.subject);
-    this.subject.subscribe(value => {
-      this.value = value;
+    this.authSvc.getSubject().subscribe(logged => {
+      this.logged = logged;
     });
+  }
+
+  ngOnInit() {
+    
   }
 
 }
