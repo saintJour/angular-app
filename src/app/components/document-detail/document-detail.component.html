@@ -23,12 +23,14 @@
           <mat-chip-list>
               <mat-chip color="primary" *ngFor="let tag of document.tags">{{tag}}</mat-chip>
           </mat-chip-list>
-          <span *ngIf="document.rating; else noRating"><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>{{document?.rating}}</span>
+          <span *ngIf="document.rating; else noRating"><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>{{document?.rating | number:'1.1'}}</span>
           <ng-template #noRating><span><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>sin rating</span></ng-template>
           <br><br>
+          <p-rating *ngIf="logged" [(ngModel)]="ratingValue" (onRate)="handleRate($event)" (onCancel)="handleCancel($event)"></p-rating>
           <button *ngIf="logged" style="width: 130px; text-align: center; margin-right: 1em" mat-stroked-button color="primary" [disabled]="saved" (click)="save()"><mat-icon>save</mat-icon> Guardar</button>
           <button style="width: 130px" mat-stroked-button color="primary" (click)="download()"><mat-icon>cloud_download</mat-icon> Descargar</button>
           <br>
+          <span>{{rating}}</span>
       </p>
       <div fxLayout="column" fxLayoutAlign="center center">
         <div>

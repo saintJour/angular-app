@@ -12,8 +12,11 @@
     </div>
     <span class="fill-space"></span>
     <div style="float: right">
-        <button mat-button (click)="goToLogin()">Iniciar Sesión</button>
-        <span>|</span>
-        <button mat-button (click)="goToSignup()">Registrarse</button>
+        <button mat-button [matMenuTriggerFor]="afterMenu"><mat-icon>menu</mat-icon></button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+                <button mat-menu-item [routerLink]="['/institutions']">Instituciones</button>
+                <button mat-menu-item [routerLink]="['/login']">Iniciar Sesión</button>
+                <button mat-menu-item [routerLink]="['/signup']">Registrarse</button>
+        </mat-menu>
     </div>
 </mat-toolbar>

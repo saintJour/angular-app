@@ -16,14 +16,6 @@ export class NavbarNoLoggedComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToLogin(){
-    this.router.navigate(['/login']);
-  }
-
-  goToSignup(){
-    this.router.navigate(['/signup']);
-  }
-
   doSearch(query: string){
     if(query){
       this.router.navigateByUrl('', {skipLocationChange: true}).then(() => {

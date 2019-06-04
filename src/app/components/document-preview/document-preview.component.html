@@ -18,7 +18,7 @@
                 <br>
                 {{document.year}}
                 <br>
-                <span *ngIf="document.rating; else noRating"><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>{{document?.rating}}</span>
+                <span *ngIf="document.rating; else noRating"><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>{{document?.rating | number:'1.1'}}</span>
                 <ng-template #noRating><span><mat-icon style="vertical-align: bottom" color="accent">star</mat-icon>sin rating</span></ng-template>
                 <!-- <star-rating [starType]="'svg'" staticColor="ok" [rating]="document.rating || 3.5"></star-rating> -->
                 <br>

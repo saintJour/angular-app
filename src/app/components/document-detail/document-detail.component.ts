@@ -9,6 +9,7 @@ import { NotifierService } from 'angular-notifier';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subject } from 'rxjs';
+import { RatingService } from 'src/app/services/rating.service';
 
 @Component({
   selector: 'app-document-detail',
@@ -24,6 +25,8 @@ export class DocumentDetailComponent implements OnInit {
   numPages: number;
   logged: Boolean;
   saved: Boolean = false;
+  ratingId: number = 0;
+  ratingValue: number = 0;
   
   constructor(
     private docSvc: DocumentService,
@@ -31,7 +34,8 @@ export class DocumentDetailComponent implements OnInit {
     private courseSvc: CourseService,
     private spinner: NgxSpinnerService,
     private notifier: NotifierService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private ratingSvc: RatingService
   ) { 
     this.page = 1;
 
@@ -53,14 +57,27 @@ export class DocumentDetailComponent implements OnInit {
       this.logged = logged;
     });
 
-    this.docSvc.getSaved()
-    .subscribe(savedDocs => {
-      savedDocs.forEach(savedDoc => {
-        if(savedDoc['DocumentId'] == this.docId){
-          this.saved = true;
-        }
+    if(this.logged){
+      this.docSvc.getSaved()
+      .subscribe(savedDocs => {
+        savedDocs.forEach(savedDoc => {
+          if(savedDoc['DocumentId'] == this.docId){
+            this.saved = true;
+          }
+        });
       });
-    });
+
+      this.ratingSvc.getAll()
+      .subscribe(ratings => {
+        ratings.forEach(rating => {
+          if(rating.DocumentId == this.docId){
+            this.ratingId = rating.id;
+            this.ratingValue = rating.value;
+          }
+        });
+      });
+    }
+    
   }
 
   ngOnInit() { }
@@ -106,6 +123,45 @@ export class DocumentDetailComponent implements OnInit {
 
   prev(){
     if(this.page > 1) this.page = this.page - 1;
+  }
+
+  handleRate(event){
+    if(this.ratingId == 0){
+      this.ratingSvc.create({
+        DocumentId: this.docId,
+        value: this.ratingValue
+      }).subscribe(res => {
+        if(res.status === 201){
+          this.ratingId = res.body['id'];
+          this.notifier.notify( 'success', 'Se ha actualizado tu valoración');
+        }
+      },
+      err => {
+        this.notifier.notify( 'success', 'Error al actualizar tu valoración');
+      });
+    }
+    else{
+      this.ratingSvc.update(this.ratingId, this.ratingValue)
+      .subscribe(res => {
+        this.notifier.notify( 'success', 'Se ha actualizado tu valoración');
+      },
+      err => {
+        this.notifier.notify( 'success', 'Error al actualizar tu valoración');
+      });
+    }  
+  }
+
+  handleCancel(event){
+    if(this.ratingId !== 0){
+      this.ratingSvc.delete(this.ratingId)
+      .subscribe(res => {
+        this.ratingId = 0;
+        this.notifier.notify( 'success', 'Se ha eliminado tu valoración');
+      },
+      err => {
+        this.notifier.notify( 'success', 'Error al eliminar tu valoración');
+      });
+    }
   }
 
 }

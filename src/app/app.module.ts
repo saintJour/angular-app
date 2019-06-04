@@ -50,7 +50,7 @@ import { TagInputModule } from 'ngx-chips';
 import { AdminComponent } from './components/admin/admin.component';
 import { MatTableModule } from '@angular/material';
 import { SavedDocumentsComponent } from './components/saved-documents/saved-documents.component';
-
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -104,7 +104,8 @@ import { SavedDocumentsComponent } from './components/saved-documents/saved-docu
     MatMenuModule,
     SliderModule,
     TagInputModule,
-    MatTableModule
+    MatTableModule,
+    RatingModule
   ],
   providers: [
     {
