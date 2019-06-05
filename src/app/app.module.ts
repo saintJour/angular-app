@@ -51,6 +51,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { MatTableModule } from '@angular/material';
 import { SavedDocumentsComponent } from './components/saved-documents/saved-documents.component';
 import {RatingModule} from 'primeng/rating';
+import { DisqusModule } from "ngx-disqus";
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import {RatingModule} from 'primeng/rating';
     SliderModule,
     TagInputModule,
     MatTableModule,
-    RatingModule
+    RatingModule,
+    DisqusModule.forRoot('apuntes-1')
   ],
   providers: [
     {

@@ -29,6 +29,7 @@
     "file-saver": "^2.0.2",
     "ng2-pdf-viewer": "^5.2.4",
     "ngx-chips": "^2.0.0-beta.0",
+    "ngx-disqus": "^2.4.3",
     "ngx-spinner": "^7.1.4",
     "primeicons": "^1.0.0",
     "primeng": "^7.1.3",

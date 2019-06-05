@@ -60,7 +60,8 @@
       </mat-card>
   </div>
   <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center">
-      <app-document-preview [isEditable]="false" [document]="document" *ngFor="let document of documents"></app-document-preview>
+    <h3 style="margin-left: 1em; margin-top: 1em" class="mat-h3" *ngIf="documents?.length == 0">No se encontraron resultados</h3>
+    <app-document-preview [isEditable]="false" [document]="document" *ngFor="let document of documents"></app-document-preview>
   </div>
 </div>
 

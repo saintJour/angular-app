@@ -14,9 +14,9 @@
     <div style="float: right">
         <button mat-button [matMenuTriggerFor]="afterMenu"><mat-icon>menu</mat-icon></button>
         <mat-menu #afterMenu="matMenu" xPosition="after">
-                <button mat-menu-item [routerLink]="['/institutions']">Instituciones</button>
-                <button mat-menu-item [routerLink]="['/login']">Iniciar Sesión</button>
-                <button mat-menu-item [routerLink]="['/signup']">Registrarse</button>
+                <button mat-menu-item [routerLink]="['/institutions']"><mat-icon>school</mat-icon>Instituciones</button>
+                <button mat-menu-item [routerLink]="['/login']"><mat-icon>account_circle</mat-icon>Iniciar Sesión</button>
+                <button mat-menu-item [routerLink]="['/signup']"><mat-icon>person_add</mat-icon>Registrarse</button>
         </mat-menu>
     </div>
 </mat-toolbar>

@@ -1,7 +1,14 @@
 <div>
     <mat-card class="card" [routerLink]="['/documents/' + document.id]">
         <div fxLayout="row" fxLayoutGap="20px">
-            <img class="doc-thumbnail" src="/assets/img/document_thumbnail.jpg">
+            <pdf-viewer
+                [src]="document?.url" 
+                [page]="1" 
+                [show-all]="false"
+                [autoresize]="true"
+                [original-size]="false"
+                style="max-height: 200px; max-width: 150px;">
+            </pdf-viewer>
             <p style="width: 320px !important;height: 180px !important">
                 <b>{{document.name}}</b>
                 <mat-chip-list>

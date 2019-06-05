@@ -14,13 +14,13 @@
     <div style="float: right">
         <button mat-button [matMenuTriggerFor]="afterMenu">Mi Cuenta</button>
         <mat-menu #afterMenu="matMenu" xPosition="after">
-                <button mat-menu-item [routerLink]="['']">Mi Perfil</button>
-                <button *ngIf="currUser?.role === 'admin'" mat-menu-item [routerLink]="['/admin']">Admin</button>
-                <button mat-menu-item [routerLink]="['/upload']">Subir Documento</button>
-                <button mat-menu-item [routerLink]="['/mydocs']">Documentos Subidos</button>
-                <button mat-menu-item [routerLink]="['/saved-documents']">Documentos Guardados</button>
-                <button mat-menu-item [routerLink]="['/institutions']">Instituciones</button>
-                <button mat-menu-item (click)="logOut()">Cerrar Sesión</button>
+                <!-- <button mat-menu-item [routerLink]="['']">Mi Perfil</button> -->
+                <button *ngIf="currUser?.role === 'admin'" mat-menu-item [routerLink]="['/admin']"><mat-icon>assignment_ind</mat-icon>Admin</button>
+                <button mat-menu-item [routerLink]="['/upload']"><mat-icon>cloud_upload</mat-icon>Subir Documento</button>
+                <button mat-menu-item [routerLink]="['/mydocs']"><mat-icon>folder</mat-icon>Documentos Subidos</button>
+                <button mat-menu-item [routerLink]="['/saved-documents']"><mat-icon>folder</mat-icon>Documentos Guardados</button>
+                <button mat-menu-item [routerLink]="['/institutions']"><mat-icon>school</mat-icon>Instituciones</button>
+                <button mat-menu-item (click)="logOut()"><mat-icon>exit_to_app</mat-icon>Cerrar Sesión</button>
         </mat-menu>
     </div>
 </mat-toolbar>
