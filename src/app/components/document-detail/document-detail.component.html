@@ -30,7 +30,7 @@
           <button *ngIf="logged" style="width: 130px; text-align: center; margin-right: 1em" mat-stroked-button color="primary" [disabled]="saved" (click)="save()"><mat-icon>save</mat-icon> Guardar</button>
           <button style="width: 130px" mat-stroked-button color="primary" (click)="download()"><mat-icon>cloud_download</mat-icon> Descargar</button>
           <br><br>
-          <disqus [identifier]="'/document' + docId"></disqus>
+          <disqus [identifier]="'/document/' + docId"></disqus>
       </p>
       <div fxLayout="column" fxLayoutAlign="center center">
         <div>
